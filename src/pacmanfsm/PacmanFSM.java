@@ -69,7 +69,21 @@ class Roam extends PacmanFSM{
                     ch.chaseTrans(see, blue, str, index);
                 
             
-                } 
+                } else {
+                    
+                    if (see == true && blue == true){
+            
+                         Evade ev = new Evade();
+                
+                         see  = Boolean.getBoolean(valueSeeBlue[0]);
+                         blue = Boolean.getBoolean(valueSeeBlue[1]);
+                         index++;
+                
+                         ev.evadeTrans(see, blue, str, index);             
+            
+                    }                
+                    
+                }               
                 
             }
         }
@@ -83,6 +97,59 @@ class Evade  extends PacmanFSM{
     public void evadeTrans(boolean see, boolean blue, String[] str, int index){
         
         
+        String[] valueSeeBlue = arrayCheck(str, index);        
+        
+        if (see == false && blue == false){
+            
+            Roam ro = new Roam();
+            
+            see  = Boolean.getBoolean(valueSeeBlue[0]);
+            blue = Boolean.getBoolean(valueSeeBlue[1]);
+            index++;
+            ro.roamTrans(see, blue, str, index);            
+            
+        } else {
+           
+            if (see == false && blue == true){
+            
+                Evade ev = new Evade();
+                
+                see  = Boolean.getBoolean(valueSeeBlue[0]);
+                blue = Boolean.getBoolean(valueSeeBlue[1]);
+                index++;
+                
+                ev.evadeTrans(see, blue, str, index);
+                
+            
+            } else {
+                
+                if (see == true && blue == false){
+            
+                    Chase ch = new Chase();
+
+                    see  = Boolean.getBoolean(valueSeeBlue[0]);
+                    blue = Boolean.getBoolean(valueSeeBlue[1]);
+                    index++;
+
+                    ch.chaseTrans(see, blue, str, index);
+                
+            
+                } else {
+                    
+                     Evade ev = new Evade();
+                
+                     see  = Boolean.getBoolean(valueSeeBlue[0]);
+                     blue = Boolean.getBoolean(valueSeeBlue[1]);
+                     index++;
+                
+                     ev.evadeTrans(see, blue, str, index);              
+                    
+                }               
+                
+            }
+        }
+        
+        
         
     }
     
@@ -92,6 +159,62 @@ class Chase  extends PacmanFSM {
     
     public void chaseTrans(boolean see, boolean blue, String[] str, int index){
         
-    }
+        String[] valueSeeBlue = arrayCheck(str, index);        
+        
+        if (see == false && blue == false){
+            
+            Roam ro = new Roam();
+            
+            see  = Boolean.getBoolean(valueSeeBlue[0]);
+            blue = Boolean.getBoolean(valueSeeBlue[1]);
+            index++;
+            ro.roamTrans(see, blue, str, index);            
+            
+        } else {
+           
+            if (see == false && blue == true){
+            
+                Evade ev = new Evade();
+                
+                see  = Boolean.getBoolean(valueSeeBlue[0]);
+                blue = Boolean.getBoolean(valueSeeBlue[1]);
+                index++;
+                
+                ev.evadeTrans(see, blue, str, index);
+                
+            
+            } else {
+                
+                if (see == true && blue == false){
+            
+                    Chase ch = new Chase();
+
+                    see  = Boolean.getBoolean(valueSeeBlue[0]);
+                    blue = Boolean.getBoolean(valueSeeBlue[1]);
+                    index++;
+
+                    ch.chaseTrans(see, blue, str, index);
+                
+            
+                } else {
+                    
+                    if (see == true && blue == true){
+            
+                         Evade ev = new Evade();
+                
+                         see  = Boolean.getBoolean(valueSeeBlue[0]);
+                         blue = Boolean.getBoolean(valueSeeBlue[1]);
+                         index++;
+                
+                         ev.evadeTrans(see, blue, str, index);             
+            
+                    }                
+                    
+                }               
+                
+            }
+        }   
+        
+   }
     
 }
